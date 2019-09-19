@@ -1,0 +1,41 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block title %} My Books {% endblock %}
+{% block content %}
+<div class="container">
+  <div class="row justify-content-start text-left mb-5">
+    <h2 class="font-weight-bold text-black">{{ request.user.first_name }}'s Books</h2>
+  </div>
+  <div class="row">
+    {% for post in my_books %}
+    <div class="col-md-12">
+      <div class="post-item bg-white p-4 d-block d-md-flex align-items-center">
+        <div class="mb-4 mb-md-0 mr-5">
+          <div class="post-item-header d-flex align-items-center">
+            <h2 class="mr-3 text-black h4">{{post.book_title}}</h2>
+          </div>
+          <div class="post-item-body d-block d-md-flex">
+            <div class="mr-3"><span class="fl-bigmug-line-portfolio23"></span>Price: {{post.price}}
+            </div>
+          </div>
+        </div>
+        <div class="ml-auto">
+          <a href="{% url 'post-update' post.id %}" class="btn btn-primary py-2">Edit</a>
+          <a href="{% url 'post-delete' post.id %}" class="btn btn-primary py-2">Delete</a>
+          <a href="{% url 'post-detail' post.id %}" class="btn btn-primary py-2">See More</a>
+        </div>
+      </div>
+    </div>
+    {% empty %}
+    <div class="row justify-content-start text-left mb-5">
+      <div class="col-md-10">
+        <h3 class="font-weight-bold text-black"> Oops, it seems you have no books so far...</h3>
+      </div>
+    </div>
+    {% endfor %}
+    <div class="col-md-10">
+      <a href="{% url 'profile-detail' request.user.id %}" class="btn btn-primary py-2">Back</a>
+    </div>
+  </div>
+</div>
+{% endblock %}

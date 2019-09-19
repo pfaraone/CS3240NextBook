@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load staticfiles %}
+{% load socialaccount %}
+{% block content %}
+<head>
+    <!-- <link rel="stylesheet" href="{% static 'css/login.css' %}"> -->
+    <link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}">
+</head>
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+<meta name="google-signin-client_id"
+      content="1010200317712-iordqnb3dfqtnmtlmvtma8v4otpe98sh.apps.googleusercontent.com.apps.googleusercontent.com">
+{% csrf_token %}
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+            <div class="card card-signup my-5" style="width:100%">
+                <div class="card-body">
+                    <h3 class="card-title text-center">Sign Up</h3>
+                    <form method="post">
+                        {% csrf_token %}
+                        <p class="card-text">Sign up to begin posting books.</p>
+                        <button class="btn btn-lg btn-google btn-block text-uppercase" type="submit"><a href="{% provider_login_url 'google' %}"><div><img width="20px" alt="Google &quot;G&quot; Logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png"/><i class="fab fa-google mr-2"></i> Sign up with Google</a></div></button>
+                        <hr class="my-4">
+                        <p class="card-text">Otherwise sign up with email.</p>
+                        {% for field in form %}
+                        <p>
+                            {{ field.label_tag }}<br>
+                            {{ field }}
+                            {% if field.help_text %}
+                            <small style="color: black">{{ field.help_text }}</small>
+                            {% endif %}
+                            {% for error in field.errors %}
+                        <p style="color: red">{{ error }}</p>
+                        {% endfor %}
+                        </p>
+                        {% endfor %}
+                        <button class="btn btn-lg btn-new btn-block text-uppercase" type="submit">Sign Up</a></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+{% endblock %}

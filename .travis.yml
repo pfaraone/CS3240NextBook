@@ -1,0 +1,13 @@
+language: python
+python:
+  - "3.6"
+# command to install dependencies
+install:
+  - pip install -r requirements-travis.txt
+  - pip install django-allauth
+  - pip install django-phonenumber-field
+  - pip install phonenumbers
+  - pip install django-widget-tweaks
+# command to run tests
+script:
+  - python manage.py test

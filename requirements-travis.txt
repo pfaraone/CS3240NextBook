@@ -1,0 +1,8 @@
+Django==2.1.2
+gunicorn
+whitenoise
+django-allauth
+django-phonenumber-field
+phonenumbers
+django-widget-tweaks
+Pillow==5.0.0

@@ -1,0 +1,59 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block title %}Post my new book!{% endblock %}
+
+{% block content %}
+<head>
+  <!-- <link rel="stylesheet" href="{% static 'css/login.css' %}"> -->
+  <link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}">
+</head>
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+<meta name="google-signin-client_id"
+content="1010200317712-iordqnb3dfqtnmtlmvtma8v4otpe98sh.apps.googleusercontent.com.apps.googleusercontent.com">
+{% csrf_token %}
+<body>
+<div class="site-section bg-light">
+      <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+        <div class="card card-signin my-3" style="width:100%">
+          <div class="card-body">
+            <h2 class="card-title text-center"><b>Post Your Book</b></h2>
+            {% for message in messages %}
+              {% if message.level == 25 %}
+              <ul class="messages">
+                  <div style="float:center" class="alert alert-success">
+                    <strong>Success!</strong> Your book has been posted!
+                  </div>
+              </ul>
+              {% endif %}
+            {% endfor %}
+              <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {% for field in form %}
+                <div class="form-label-group">
+                  {{field.label_tag}}
+                  <p>{{field}} </p>
+                  {% for error in field.errors %}
+                      <div class="alert alert-danger">
+                          <strong>{{ error|escape }}</strong>
+                      </div>
+                  {% endfor %}
+                </div>
+                {% endfor %}
+                  <!-- {% if field.field.required %} *{% endif %} -->
+                  {% for error in form.non_field_errors %}
+                      <div class="alert alert-danger">
+                          <strong>{{ error|escape }}</strong>
+                      </div>
+                  {% endfor %}
+                <hr class="my-4">
+                <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Post</button>
+                <hr class="my-4">
+                <a class="btn btn-lg btn-primary btn-block text-uppercase" href="{% url 'home' %}"> Home</a>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  {% endblock %}

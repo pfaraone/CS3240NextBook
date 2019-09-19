@@ -1,0 +1,197 @@
+<!-- templates/base.html -->
+<!DOCTYPE html>
+{% load static %}
+{% load socialaccount %}
+<html>
+<head>
+    <title>Nextbook!</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,700,900|Roboto+Mono:300,400,500">
+    <link rel="stylesheet" href="{% static 'fonts/icomoon/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <!-- <link rel="stylesheet" href="{% static 'css/login.css' %}"> -->
+    <link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}">
+    <link rel="stylesheet" href="{% static 'css/jquery-ui.css' %}">
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap-datepicker.css' %}">
+    <link rel="stylesheet" href="{% static 'css/animate.css' %}">
+    <link rel="stylesheet" href="{% static 'fonts/flaticon/font/flaticon.css' %}">
+    <link rel="stylesheet" href="{% static 'css/fl-bigmug-line.css' %}">
+    <link rel="stylesheet" href="{% static 'css/aos.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <style>
+
+    .dropdown #mobile{
+    float: right;
+    position: relative;
+    display: inline-block;
+    }
+
+    .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 120px;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    right: 0;
+    z-index: 1;
+    }
+
+    .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    }
+    .site-footer{
+       width:100%;
+       height:70px;
+       padding:10px;
+       align:center;
+
+    }
+    .show {display: block;}
+</style>
+</head>
+<body>
+<main>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <meta name="google-signin-client_id" content="1010200317712-iordqnb3dfqtnmtlmvtma8v4otpe98sh.apps.googleusercontent.com.apps.googleusercontent.com">
+    <div class="site-wrap">
+        <!--Header bar starts-->
+        <header class="site-navbar py-1" role="banner">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-6 col-xl-2">
+                        <h1 class="mb-0"><a href="{% url 'home' %}" class="text-black h2 mb-0">Next<strong>Book</strong></a>
+                        </h1>
+                    </div>
+                    <div class="col-10 col-xl-10 d-none d-xl-block">
+                        <nav class="site-navigation text-right" role="navigation">
+                            <ul class="site-menu js-clone-nav mr-auto .d-none .d-lg-block">
+                                <li class="active"><a href="{% url 'home'%}">Home</a></li>
+                                {% if user.is_authenticated %}
+                                <li class="has-children"><a href="{% url 'profile-detail' request.user.id %}">My Account</a>
+                                    <ul class="dropdown">
+                                        <li><a href="{% url 'profile-detail' request.user.id %}">Management</a></li>
+                                        <li><a href="{% url 'logout'%}">Log out</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="{% url 'posting_form'%}"><span
+                                        class="rounded bg-primary py-2 px-3 text-white"><span class="h5 mr-2">+</span> New Post</span></a>
+                                </li>
+                                {% else %}
+                                <li><a href="{% url 'login'%}">Log in</a></li>
+                                <!-- <li><div class="btn white darken-4 col s10 m4"><a href="{% provider_login_url 'google' %}">
+                                  <div class="left">
+                                      <img width="20px" alt="Google &quot;G&quot; Logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png"/>
+                                  </div>
+                                  Log In with Google</a></li> -->
+                                <li><a href="{% url 'account_signup'%}"><span
+                                        class="rounded bg-primary py-2 px-3 text-white"><span class="h5 mr-2">+</span> Sign up</span></a>
+                                </li>
+                                {% endif %}
+                            </ul>
+                        </nav>
+                    </div>
+                    <div class="col-6 col-xl-2 text-right d-block">
+                        <div class="d-inline-block d-xl-none ml-md-0 mr-auto py-3"
+                             style="position: relative; top: 3px;">
+                            <div id="mobile" class="dropdown">
+                            <button style="background-color:white;border:none;" class="dropbtn icon-menu h3" onclick="myFunction()"></button>
+                            <div id="myDropdown" class="dropdown-content">
+                             <li style="list-style-type:none;" class="active"><a href="{% url 'home'%}">Home</a></li>
+                                {% if user.is_authenticated %}
+                                <li style="list-style-type:none;" class="has-children"><a href="{% url 'profile-detail' request.user.id %}">My Account</a>
+                                    <ul class="dropdown">
+                                        <li style="list-style-type:none;"><a href="{% url 'profile-detail' request.user.id %}">Management</a></li>
+                                        <li style="list-style-type:none;"><a href="{% url 'logout'%}">Log out</a></li>
+                                    </ul>
+                                </li>
+                                <li style="list-style-type:none;"><a href="{% url 'posting_form'%}"><span>New Post</span></a>
+                                </li>
+                                {% else %}
+                                <li style="list-style-type:none;"><a href="{% url 'login'%}">Sign In</a></li>
+                                <li style="list-style-type:none;"><a href="{% url 'account_signup'%}"><span>Sign up</span></a>
+                                </li>
+                                {% endif %}
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!--Header bar ends-->
+    </div>
+
+    {% block content %}
+    {% endblock %}
+
+    <!--Footer starts-->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="row pt-2 mt-2 text-center">
+                <div class="col-md-12">
+                    <p>
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        Copyright &copy;
+                        <script data-cfasync="false"
+                                src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+                        <script>document.write(new Date().getFullYear());</script>
+                        All Rights Reserved | Nextbook is proud to have <a
+                            href="https://colorlib.com" target="_blank">Colorlib</a> as its sponsor.
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!--Footer ends-->
+</main>
+</body>
+
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">-->
+
+<!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+<script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+<script src="{% static 'js/jquery-migrate-3.0.1.min.js' %}"></script>
+<script src="{% static 'js/jquery-ui.js' %}"></script>
+<script src="{% static 'js/popper.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/owl.carousel.min.js' %}"></script>
+<script src="{% static 'js/jquery.stellar.min.js' %}"></script>
+<script src="{% static 'js/jquery.countdown.min.js' %}"></script>
+<script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
+<script src="{% static 'js/bootstrap-datepicker.min.js' %}"></script>
+<script src="{% static 'js/aos.js' %}"></script>
+
+<script>
+/* When the user clicks on the button,
+toggle between hiding and showing the dropdown content */
+function myFunction() {
+    document.getElementById("myDropdown").classList.toggle("show");
+}
+
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&libraries=places&callback=initAutocomplete" async defer></script>
+<script src="js/main.js"></script>
+</html>

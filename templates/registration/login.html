@@ -1,0 +1,84 @@
+<!-- templates/registration/login.html -->
+{% extends 'base.html' %}
+{% load static %}
+{% load staticfiles %}
+{% load socialaccount %}
+{% block content %}
+<head>
+<!-- <link rel="stylesheet" href="{% static 'css/login.css' %}"> -->
+
+<link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}">
+</head>
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+<meta name="google-signin-client_id" content="1010200317712-iordqnb3dfqtnmtlmvtma8v4otpe98sh.apps.googleusercontent.com.apps.googleusercontent.com">
+{% csrf_token %}
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+        <div class="card card-signin my-5">
+          <div class="card-body">
+            <h5 class="card-title text-center">Sign In</h5>
+            <form class="form-signin">
+              <div class="form-label-group">
+                <input type="email" id="inputEmail" class="form-control" required autofocus>
+                <label for="inputEmail">Email address</label>
+              </div>
+
+              <div class="form-label-group">
+                <input type="password" id="inputPassword" class="form-control" required>
+                <label for="inputPassword">Password</label>
+              </div>
+
+              <div class="custom-control custom-checkbox mb-3">
+                <input type="checkbox" class="custom-control-input" id="customCheck1">
+                <label class="custom-control-label" for="customCheck1">Remember password</label>
+              </div>
+              <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Sign in</button>
+              <button class="btn btn-lg btn-google btn-block text-uppercase" type="submit"><a href="{% provider_login_url 'google' %}"><div><img width="20px" alt="Google &quot;G&quot; Logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png"/><i class="fab fa-google mr-2"></i> Sign in with Google</a></div></button>
+              <hr class="my-4">
+              <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">New to NextBook? Sign up<a href="{% url 'account_signup' %}"></button>
+              <hr class="my-4">
+              <p><a href="{% url 'password_reset' %}">Forgot your password? Click here</a></p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+<!-- <script src="https://apis.google.com/js/platform.js" async defer></script>
+<meta name="google-signin-client_id" content="1010200317712-iordqnb3dfqtnmtlmvtma8v4otpe98sh.apps.googleusercontent.com.apps.googleusercontent.com">
+<div class="site-section bg-light">
+    <div class="container">
+        <div class="row justify-content-start text-left mb-5">
+            <h2 class="font-weight-bold text-black">Log in to NextBook</h2>
+            {% if form.errors %}
+            <p style="color: red">Your username and password didn't match. Please try again.</p>
+            {% endif %}
+        </div>
+        <div class="row justify-content-start text-left mb-5">
+            <form method="post">
+                {% csrf_token %}
+                <input type="hidden" name="next" value="{{ next }}"/>
+                {% for field in form %}
+                <p>
+                    {{ field.label_tag }}<br>
+                    {{ field }}<br>
+                    {% for error in field.errors %}
+                <p style="color: red">{{ error }}</p>
+                {% endfor %}
+                {% if field.help_text %}
+                <p>
+                    <small style="color: black">{{ field.help_text }}</small>
+                </p>
+                {% endif %}
+                </p>
+                {% endfor %}
+                <button type="submit">Log in</button>
+                <div class="btn white darken-4 col s10 m4"><a href="{% provider_login_url 'google' %}">
+                  <div class="left">
+                      <img width="20px" alt="Google &quot;G&quot; Logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png"/>
+                  </div> Log In with Google</a>
+                <!-- <a href="{% url 'password_reset'%}">Password Reset</a> -->
+{% endblock %}

@@ -1,0 +1,71 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block title %} Book Detail {% endblock %}
+
+{% block content %}
+<head>
+    <!-- <link rel="stylesheet" href="{% static 'css/login.css' %}"> -->
+
+    <!-- <link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}"> -->
+</head>
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+<meta name="google-signin-client_id"
+      content="1010200317712-iordqnb3dfqtnmtlmvtma8v4otpe98sh.apps.googleusercontent.com.apps.googleusercontent.com">
+{% csrf_token %}
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+            <div class="card card-signin my-3">
+                <div class="card-body">
+                    <img class="card-img" src="{{ post.image.url }}" alt="{{post.book_title}}">
+                    </div>
+                </div>
+        </div>
+        <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+            <div class="card card-signin my-5">
+                <div class="card-body">
+                    <h3 class="card-title text-center">{{post.book_title}}</h3>
+                    <p><b>Price: </b>{{ post.price }}</p>
+                    <p><b>Rent/Buy: </b>{{ post.rent_buy }}</p>
+                    <p><b>Class: </b>{{ post.subject_area}}  {{post.class_assoc }}</p>
+                    <!-- <p><b>Class: </b>{{ post.class_assoc }}</p> -->
+                    <p><b>ISBN: </b>{{ post.iSBN }}</p>
+                    <p><b>Email: </b>{{ post.contact }}</p>
+                    <hr class="my-4">
+                    <a class="btn btn-lg btn-primary btn-block text-uppercase" href="{% url 'home' %}">Home</a>
+                    <a class="btn btn-lg btn-primary btn-block text-uppercase" href="mailto:{{ post.user }}?subject=Interested in {{post.book_title}}&body=Hi, I'm interested in {{post.book_title}} textbook, can you email me back with when and where you want to meet on Grounds so I can take it off your hands?">Contact Owner</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+<!--<div class="site-section bg-light">-->
+<!--<div class="container">-->
+<!--<div class="row justify-content-start text-left mb-5">-->
+<!--<h2> {{ post.book_title }}</h2>-->
+<!--</div>-->
+<!--<div class="row justify-content-start text-left mb-5">-->
+<!--<ul>-->
+<!--<img src="{{post.image.url}}" alt="{{post.book_title}}"-->
+<!--style="max-height: 1000px; max-width: 600px; object-fit: contain"/>-->
+<!--</ul>-->
+<!--<ul>-->
+<!--<li><b>Price: </b>{{ post.price }}</li>-->
+<!--<li><b>Rent/Buy: </b>{{ post.rent_buy }}</li>-->
+<!--<li><b>Subject: </b>{{ post.subject_area }}</li>-->
+<!--<li><b>Class: </b>{{ post.class_assoc }}</li>-->
+<!--<li><b>ISBN: </b>{{ post.iSBN }}</li>-->
+<!--&lt;!&ndash;<li><b>Seller: </b>{{ post.seller_name }}</li>&ndash;&gt;-->
+<!--<li><b>Contact: </b>{{ post.contact }}</li>-->
+<!--</ul>-->
+<!--</div>-->
+<!--<div class="row justify-content-start text-right mb-5">-->
+<!--<a href="{% url 'home' %}" class="btn btn-primary py-2">Home</a></div>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+{% endblock %}
