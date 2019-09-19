@@ -1,0 +1,21 @@
+<!-- templates/signup.html -->
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Sign Up{% endblock %}
+
+{% block content %}
+<div class="site-section bg-light">
+    <div class="container">
+        <div class="row justify-content-start text-left mb-5">
+            <h2 class="font-weight-bold text-black">Sign up</h2>
+        </div>
+        <div class="row justify-content-start text-left mb-5">
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <input class="btn btn-primary py-2" type="submit" value = "Sign up"/>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

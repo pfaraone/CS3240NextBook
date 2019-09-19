@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Search Result{% endblock %}
+{% block content %}
+<div class="card">
+<div class="card-header">
+<h2 class="card-title">Search Results</h2>
+</div>
+{% if result %}
+{% for post in result %}
+
+<div class="col-md-12">
+    <div class="post-item bg-white p-4 d-block d-md-flex align-items-center">
+        <div class="mb-4 mb-md-0 mr-5">
+            <div class="post-item-header d-flex align-items-center">
+                <h2 class="mr-3 text-black h4">{{post.book_title}}</h2>
+            </div>
+            <div class="post-item-body d-block d-md-flex">
+                <div class="mr-3"><span class="fl-bigmug-line-portfolio23"></span>Price: {{post.price}}
+                </div>
+                <div><span class="fl-bigmug-line-big104"></span>Sold by: {{post.seller_name}}</div>
+            </div>
+        </div>
+        <div class="ml-auto">
+            <a href="{% url 'post-detail' post.id %}" class="btn btn-primary py-2">See More</a>
+        </div>
+    </div>
+</div>
+
+{% endfor %}
+{% else %}
+<p class="card-body">There are no results for the desired search.</p>
+{% endif %}
+</div>
+{% endblock %}

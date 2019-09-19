@@ -1,0 +1,385 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load socialaccount %}
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<!--Title image starts-->
+<!--<div class="site-blocks-cover" style="background-image: url(images/hero_bg_1.jpg);" data-aos="fade" data-stellar-background-ratio="0.5">-->
+<div class="site-blocks-cover" style="background-image: url(static/img/library_2.png);"
+data-stellar-background-ratio="0.5">
+<div class="container">
+  <div class="row row-custom align-items-center">
+    <div class="col-md-10">
+      <h1 class="mb-2 text-white w-75">Trade Your Textbook <span class="font-weight-bold">Now!</span></h1>
+      <h3 class="mb-2 text-white w-30">Fastest on-Grounds textbook trading platform, created by CS 3240 -
+        T2</h3>
+        <h3 class="mb-2 text-white w-30">All rights reserved</h3>
+      </div>
+      <!--Search tab starts-->
+      <div class="col-md-10">
+        <div class="card my-auto py-auto">
+          <div class="card-body">
+            <h5 class="card-title text-center">Find A Book</h5>
+            <div class="book-search">
+              <div class="tab-content bg-white p-4 rounded" id="pills-tabContent">
+                <div class="tab-pane fade show active" id="pills-book" role="tabpanel"
+                aria-labelledby="pills-book-tab">
+                <form action="{% url 'search_result' %}" method="get">
+                  <div class="row">
+                    <div class="col-md-6 col-lg-3 mb-3 mb-lg-0">
+                      <input type="text" name="book_title" class="form-control"
+                      placeholder="e.g. Intro to Algorithm">
+                    </div>
+                    <div class="col-md-6 col-lg-3 mb-3 mb-lg-0">
+                      <div class="select-wrap">
+                        <span class="icon-keyboard_arrow_down arrow-down"></span>
+                        <select name="" id="" class="form-control">
+
+                          <option>AAS</option>
+                          <option>AMST</option>
+                          <option>ANTH</option>
+                          <option>APMA</option>
+                          <option>ARAB</option>
+                          <option>ARAD</option>
+                          <option>ARCY</option>
+                          <option>ARTH</option>
+                          <option>ARTR</option>
+                          <option>ARTS</option>
+                          <option>ASL</option>
+                          <option>ASTR</option>
+                          <option>BIOL</option>
+                          <option>BME</option>
+                          <option>CASS</option>
+                          <option>CHE</option>
+                          <option>CHEM</option>
+                          <option>CHIN</option>
+                          <option>CHTR</option>
+                          <option>CLAS</option>
+                          <option>COLA</option>
+                          <option>COMM</option>
+                          <option>CPLT</option>
+                          <option>CS</option>
+                          <option>DANC</option>
+                          <option>DRAM</option>
+                          <option>EALC</option>
+                          <option>EAST</option>
+                          <option>ECE</option>
+                          <option>ECON</option>
+                          <option>EGMT</option>
+                          <option>ELA</option>
+                          <option>ENAM</option>
+                          <option>ENCR</option>
+                          <option>ENCW</option>
+                          <option>ENEC</option>
+                          <option>ENGL</option>
+                          <option>ENGN</option>
+                          <option>ENLT</option>
+                          <option>ENMC</option>
+                          <option>ENMD</option>
+                          <option>ENNC</option>
+                          <option>ENPW</option>
+                          <option>ENRN</option>
+                          <option>ENSP</option>
+                          <option>ENWR</option>
+                          <option>EVSC</option>
+                          <option>FORU</option>
+                          <option>FREN</option>
+                          <option>FRTR</option>
+                          <option>GDS</option>
+                          <option>GERM</option>
+                          <option>GETR</option>
+                          <option>GREE</option>
+                          <option>GSGS</option>
+                          <option>GSSJ</option>
+                          <option>GSVS</option>
+                          <option>HEBR</option>
+                          <option>HIAF</option>
+                          <option>HIEA</option>
+                          <option>HIEU</option>
+                          <option>HILA</option>
+                          <option>HIND</option>
+                          <option>HISA</option>
+                          <option>HIST</option>
+                          <option>HIUS</option>
+                          <option>HSCI</option>
+                          <option>INST</option>
+                          <option>ITAL</option>
+                          <option>ITTR</option>
+                          <option>JAPN</option>
+                          <option>JPTR</option>
+                          <option>JWST</option>
+                          <option>KOR</option>
+                          <option>LASE</option>
+                          <option>LATI</option>
+                          <option>LING</option>
+                          <option>LNGS</option>
+                          <option>MAE</option>
+                          <option>MATH</option>
+                          <option>MDST</option>
+                          <option>MESA</option>
+                          <option>MEST</option>
+                          <option>MSE</option>
+                          <option>MUSI</option>
+                          <option>PERS</option>
+                          <option>PETR</option>
+                          <option>PHIL</option>
+                          <option>PHS</option>
+                          <option>PHYS</option>
+                          <option>PLAP </option>
+                          <option>PLCP </option>
+                          <option>PLIR </option>
+                          <option>PLPT</option>
+                          <option>POL</option>
+                          <option>PORT</option>
+                          <option>POTR</option>
+                          <option>PPL</option>
+                          <option>PSYC</option>
+                          <option>RELA</option>
+                          <option>RELB</option>
+                          <option>RELC</option>
+                          <option>RELG</option>
+                          <option>RELH</option>
+                          <option>RELI</option>
+                          <option>RELJ</option>
+                          <option>RELS</option>
+                          <option>RUSS</option>
+                          <option>RUTR</option>
+                          <option>SANS</option>
+                          <option>SAST</option>
+                          <option>SATR</option>
+                          <option>SLAV</option>
+                          <option>SLFK</option>
+                          <option>SLTR</option>
+                          <option>SOC</option>
+                          <option>SPAN</option>
+                          <option>SPTR</option>
+                          <option>STAT</option>
+                          <option>SYS</option>
+                          <option>TBTN</option>
+                          <option>URDU</option>
+                          <option>USEM</option>
+                          <option>WGS</option>
+                          <option>YIDD</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3 mb-3 mb-lg-0">
+                      <input type="text" name="iSBN"
+                      class="form-control form-control-block search-input"
+                      placeholder="ISBN">
+                    </div>
+                    <div class="col-md-6 col-lg-3 mb-3 mb-lg-0">
+                      {% csrf_token %}
+                      <!--For some reason it displays value an searches on it-->
+                      <input type="submit" class="btn btn-primary btn-block" method="GET"
+                      name="usr_query" value='Search' action="{% url 'search' %}">
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--Search tab ends-->
+
+
+  </div>
+</div>
+</div>
+<!--Title image ends-->
+<!--List of entries starts-->
+<div class="site-section bg-light">
+  <div class="container">
+    <div class="card my-auto py-auto">
+      <div class="card-header d-flex justify-content-between">
+        <div class="pull-left">
+          <h2 class="card-title text-left"> Recent Posts </h2>
+        </div>
+        <div class="pull-right">
+          {% if user.is_authenticated %}
+          <a href="{% url 'posting_form'%}" class="btn btn-primary py-3"><span class="h5">+</span> New Post</a>
+          {% else %}
+          <a href="{% url 'login'%}" class="btn btn-primary py-3"><span class="h5">+</span> Login to Post</a>
+          {% endif %}
+        </div>
+      </div>
+
+      <!--<div class="row justify-content-start text-left mb-5">-->
+      <!--<div class="col-md-9">-->
+      <!--<form name="myform" method="GET" action="{% url 'search' %}">-->
+      <!--{% csrf_token %}-->
+      <!--<input type="search" name="usr_query"-->
+      <!--value='{{ query }}' required placeholder="Search" />-->
+      <!--</form>-->
+
+      <!--<div class="col-md-9" data-aos="fade">-->
+      <!--<h2 class="font-weight-bold text-black">Recent Posts</h2>-->
+      <!--</div> -->
+      <!--<div class="col-md-3" data-aos="fade" data-aos-delay="200">-->
+
+
+      <!--</div>-->
+      <!--Single entry of data starts-->
+      <!--<div class="row" data-aos="fade">-->
+      <div class="card-body">
+        <div class="row">
+          {% if user.is_authenticated %}
+          {% for post in posts %}
+          <div class="col-md-12">
+            <div class="post-item bg-white p-4 d-block d-md-flex align-items-center">
+              <div class="mb-4 mb-md-0 mr-5">
+                <div class="post-item-header d-flex align-items-center">
+                  <h2 class="mr-3 text-black h4">{{post.book_title}}</h2>
+                </div>
+                <div class="post-item-body d-block d-md-flex">
+                  <div class="mr-3"><span class="fl-bigmug-line-portfolio23"></span>Price: {{post.price}}
+                  </div>
+                  <!--<div><span class="fl-bigmug-line-big104"></span>Sold by: {{post.seller_name}}</div>-->
+                </div>
+              </div>
+              <div class="ml-auto">
+                <!--<a href="#" class="btn btn-secondary rounded-circle btn-favorite text-gray-500"><span class="icon-heart"></span></a>-->
+                <a href="{% url 'post-detail' post.id %}" class="btn btn-primary py-2">See More</a>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+          {% else %}
+          <h4 style="text-indent:15px;"class ="card-text text-left">Please login to view the current posts!</h4>
+          {% endif %}
+        </div>
+
+        <!--Single entry of data ends-->
+
+        <!--Page indice starts-->
+        {% if user.is_authenticated %}
+        <div class="pagination">
+          <center>
+            <span class="step-links">
+              {% if posts.has_previous %}
+              <a href="?page=1">&laquo; first</a>
+              <a href="?page={{ posts.previous_page_number }}">previous</a>
+              {% endif %}
+
+              <span class="current">
+                Page {{ posts.number }} of {{ posts.paginator.num_pages }}.
+              </span>
+
+              {% if posts.has_next %}
+              <a href="?page={{ posts.next_page_number }}">next</a>
+              <a href="?page={{ posts.paginator.num_pages }}">last &raquo;</a>
+              {% endif %}
+            </span>
+          </center>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+<!--List of entries ends-->
+
+<!--Info section starts-->
+<div class="site-section">
+  <div class="container">
+    <div class="row justify-content-center text-center mb-5">
+      <!--<div class="col-md-6" data-aos="fade" >-->
+      <div class="col-md-6">
+        <h2 class="text-black">Why Next<strong>Book</strong>?</h2>
+      </div>
+    </div>
+    <div class="row hosting">
+
+      <!--Refer to bigmug-line database for icons-->
+      <!--<div class="col-md-6 col-lg-4 mb-5 mb-lg-4" data-aos="fade" data-aos-delay="100">-->
+      <div class="col-md-6 col-lg-4 mb-5 mb-lg-4">
+        <div class="unit-3 h-100 bg-white">
+          <div class="d-flex align-items-center mb-3 unit-3-heading">
+            <div class="unit-3-icon-wrap mr-4">
+              <svg class="unit-3-svg" xmlns="http://www.w3.org/2000/svg" width="59px" height="68px">
+                <path fill-rule="evenodd" stroke-width="2px" stroke-linecap="butt"
+                stroke-linejoin="miter" fill="none"
+                d="M29.000,66.000 L1.012,49.750 L1.012,17.250 L29.000,1.000 L56.988,17.250 L56.988,49.750 L29.000,66.000 Z"></path>
+              </svg>
+              <span class="unit-3-icon icon fl-bigmug-line-portfolio23"></span>
+            </div>
+            <h2 class="h5">Get Your Book Fast</h2>
+          </div>
+          <div class="unit-3-body">
+            <p>Why wait for a delivery when the book can be picked up locally within 24 hours
+              of buying or renting it?</p>
+            </div>
+          </div>
+        </div>
+
+        <!--<div class="col-md-6 col-lg-4 mb-5 mb-lg-4" data-aos="fade" data-aos-delay="200">-->
+        <div class="col-md-6 col-lg-4 mb-5 mb-lg-4">
+          <div class="unit-3 h-100 bg-white">
+            <div class="d-flex align-items-center mb-3 unit-3-heading">
+              <div class="unit-3-icon-wrap mr-4">
+                <svg class="unit-3-svg" xmlns="http://www.w3.org/2000/svg" width="59px" height="68px">
+                  <path fill-rule="evenodd" stroke-width="2px" stroke-linecap="butt"
+                  stroke-linejoin="miter" fill="none"
+                  d="M29.000,66.000 L1.012,49.750 L1.012,17.250 L29.000,1.000 L56.988,17.250 L56.988,49.750 L29.000,66.000 Z"></path>
+                </svg>
+                <span class="unit-3-icon icon fl-bigmug-line-airplane86"></span>
+              </div>
+              <h2 class="h5">Bypass Delievery Fee</h2>
+            </div>
+            <div class="unit-3-body">
+              <p>Why spend more money on shipping when books can be picked up locally?</p>
+            </div>
+          </div>
+        </div>
+
+        <!--<div class="col-md-6 col-lg-4 mb-5 mb-lg-4" data-aos="fade" data-aos-delay="300">-->
+        <div class="col-md-6 col-lg-4 mb-5 mb-lg-4">
+          <div class="unit-3 h-100 bg-white">
+            <div class="d-flex align-items-center mb-3 unit-3-heading">
+              <div class="unit-3-icon-wrap mr-4">
+                <svg class="unit-3-svg" xmlns="http://www.w3.org/2000/svg" width="59px" height="68px">
+                  <path fill-rule="evenodd" stroke-width="2px" stroke-linecap="butt"
+                  stroke-linejoin="miter" fill="none"
+                  d="M29.000,66.000 L1.012,49.750 L1.012,17.250 L29.000,1.000 L56.988,17.250 L56.988,49.750 L29.000,66.000 Z"></path>
+                </svg>
+                <span class="unit-3-icon icon fl-bigmug-line-big104"></span>
+              </div>
+              <h2 class="h5">On Grounds Pickup</h2>
+            </div>
+            <div class="unit-3-body">
+              <p>All book sellers and renters are right here in Charlottesville,
+                so there is an option to physically meet up with them to ask questions or express concerns!
+                Along with recieving the actual book in person from the seller!</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <!--Info section ends-->
+
+    <!--Subscription starts-->
+    <!--<div class="py-5 bg-primary">-->
+    <!--<div class="container">-->
+    <!--<div class="row">-->
+    <!--<div class="col-md-12">-->
+    <!--<h2 class="text-white h4 font-weihgt-normal mb-4">Subscribe Newsletter</h2>-->
+    <!--</div>-->
+    <!--</div>  -->
+    <!--<form action="" class="row">-->
+    <!--<div class="col-md-9">-->
+    <!--<input type="text" class="form-control border-0 mb-3 mb-md-0" placeholder="Enter Your Email">-->
+    <!--</div>-->
+    <!--<div class="col-md-3">-->
+    <!--<input type="submit" value="Send" class="btn btn-dark btn-block" style="height: 45px;">  -->
+    <!--</div>-->
+    <!--</form>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--Subscription ends-->
+
+    {% endblock %}
