@@ -6,4 +6,4 @@ django-allauth
 django-phonenumber-field
 phonenumbers
 django-widget-tweaks
-Pillow==5.0.0
+Pillow==8.2.0
